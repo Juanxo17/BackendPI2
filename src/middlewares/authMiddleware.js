@@ -20,7 +20,7 @@ export const verifyToken = async (req, res, next) => {
         const decodedToken = await admin.auth().verifyIdToken(token);
 
         // 5. Inyectamos los datos del usuario en la request
-        // Esto es clave: los controladores posteriores podrán acceder a req.user.uid, req.user.email, etc.
+       
         req.user = decodedToken;
 
         // 6. Todo correcto, damos paso a la siguiente función
@@ -32,7 +32,7 @@ export const verifyToken = async (req, res, next) => {
         return res.status(401).json({
             status: 'error',
             message: 'Token inválido o expirado',
-            // Opcional: enviamos el mensaje real del error para facilitar el debug desde el frontend
+           
             error: error.message 
         });
     }
